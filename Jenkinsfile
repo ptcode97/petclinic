@@ -19,7 +19,7 @@ fi"""
     stage('Compile PetClinic') {
       steps {
         dir('petclinicapp') {
-          sh """docker run -i --rm -v "`pwd`":/usr/src/mymaven -v "`pwd`/target:/usr/src/mymaven/target" -w /usr/src/mymaven maven:3.6.3-jdk-11 mvn -Dmaven.test.skip=true package
+          sh """docker run -i --rm -v "`pwd`":/var/lib/jenkins/workspace/test_petclinic -v "`pwd`/target:/var/lib/jenkins/workspace/test_petclinic/target" -w /var/lib/jenkins/workspace/test_petclinic maven:3.6.3-jdk-11 mvn -Dmaven.test.skip=true package
 cp target/*.jar ../containers/petclinic"""
         }
       }
