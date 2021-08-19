@@ -20,11 +20,11 @@ fi"""
 
     stage('Compile PetClinic') {
       steps {
-        {
+        
           sh "docker build -t petrunning ."
-        }
       }
     }
+    
     stage('Build add or update Petclinic configuration') {
       steps {
         sh """cd openshift
