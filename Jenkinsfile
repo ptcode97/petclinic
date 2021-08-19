@@ -15,17 +15,7 @@ then
 fi"""
       }
     }
-    stage('Clone PetClinic project') {
-    steps {
-            checkout([$class: 'GitSCM',
-                branches: [[name: '*/main']],
-                extensions: [
-                  [$class: 'RelativeTargetDirectory', relativeTargetDir: 'petclinicapp']
-                ],
-                userRemoteConfigs: [[url: 'https://github.com/spring-projects/spring-petclinic.git']]
-              ])
-      }
-    }
+    
     stage('Compile PetClinic') {
       steps {
         dir('petclinicapp') {
