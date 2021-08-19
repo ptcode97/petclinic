@@ -17,10 +17,10 @@ fi"""
       }
     }
     
-    
+
     stage('Compile PetClinic') {
       steps {
-        dir('petclinic') {
+        {
           sh "docker build -t petrunning ."
         }
       }
