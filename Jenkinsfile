@@ -17,7 +17,7 @@ fi"""
     }
     stage('Check for POM') {
     steps {
-            sh """ cat ./POM.xml """
+            sh """ pwd """
       }
     }
     stage('Compile PetClinic') {
