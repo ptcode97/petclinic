@@ -17,7 +17,7 @@ fi"""
     }
     stage('Check for POM') {
     steps {
-            sh """ pwd """
+            sh """ mvn clean package """
       }
     }
     stage('Compile PetClinic') {
