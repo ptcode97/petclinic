@@ -20,11 +20,14 @@ fi"""
 
     stage('Compile PetClinic') {
       steps {
-        
-          sh "docker build -t petrunning ."
+        dir('petclinic') {
+          sh """docker run -i --rm -v "`pwd`":/usr/src/mymaven -v "`pwd`/target:/usr/src/mymaven/target" -w /usr/src/mymaven maven:3.6.3-jdk-11 mvn -Dmaven.test.skip=true package
+                cp target/*.jar ../containers/petclinic"""
+        }
+          //sh "docker build -t petrunning ."
       }
     }
-    
+
     stage('Build add or update Petclinic configuration') {
       steps {
         sh """cd openshift
