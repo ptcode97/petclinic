@@ -1,3 +1,4 @@
+
 pipeline {
   agent any
   parameters {
@@ -15,16 +16,12 @@ then
 fi"""
       }
     }
-    stage('Check for POM') {
-    steps {
-            sh """ pwd """
-      }
+    
     }
     stage('Compile PetClinic') {
       steps {
         dir('petclinic') {
-          sh """docker run -i --rm -v "`pwd`":/usr/src/mymaven -v "`pwd`/target:/usr/src/mymaven/target" -w /usr/src/mymaven maven:3.6.3-jdk-11 mvn -Dmaven.test.skip=true package
-cp target/*.jar ../containers/petclinic"""
+          sh "docker build -t petrunning ."
         }
       }
     }
