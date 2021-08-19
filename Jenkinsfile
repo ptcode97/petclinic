@@ -17,7 +17,7 @@ fi"""
       }
     }
     
-    }
+    
     stage('Compile PetClinic') {
       steps {
         dir('petclinic') {
